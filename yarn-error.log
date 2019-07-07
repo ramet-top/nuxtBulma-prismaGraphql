@@ -1,0 +1,40 @@
+Arguments: 
+  /Users/ramet.top/.nvm/versions/node/v10.10.0/bin/node /usr/local/Cellar/yarn/1.17.0/libexec/bin/yarn.js
+
+PATH: 
+  /usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/ramet.top/.nvm/versions/node/v10.10.0/bin:/usr/local/opt/node@10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/usr/local/opt/node@10/bin
+
+Yarn version: 
+  1.17.0
+
+Node version: 
+  10.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/ramet.top/Desktop/prisma-server-csbsru/prisma-docker/graphql-auth/node_modules/ansi-regex'
+
+npm manifest: 
+  {
+    "name": "graphql-auth",
+    "version": "1.0.0",
+    "dependencies": {
+      "bcrypt": "3.0.6",
+      "graphql-shield": "5.3.6",
+      "graphql-yoga": "1.17.4",
+      "jsonwebtoken": "8.5.1",
+      "nodemon": "^1.19.1",
+      "prisma-client-lib": "1.34.0"
+    },
+    "scripts": {
+      "start": "nodemon src/index.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

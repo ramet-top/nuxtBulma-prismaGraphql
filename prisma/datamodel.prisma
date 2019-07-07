@@ -1,0 +1,102 @@
+
+type User {
+  id: ID! @id
+  username: String! @unique
+  email: String! @unique
+  password: String!
+  img_url: String
+  gender: Gender @default(value: MALE)
+  prefix: String @default(value: "-")
+  firstname: String
+  lastname: String
+  birthday: DateTime
+  address: Address
+  role: AccessRole! @default(value: STUDENT)
+  posts: [Post!]! @relation(link: INLINE)
+  
+  student_status: EducationStatus @default(value: NULL)
+  professor_expertise: [Expertise] @relation(link: INLINE)
+  professor_research: [Research] @relation(link: INLINE)
+  
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Post {
+  id: ID! @id
+  published: Boolean! @default(value: false)
+  title: String @unique
+  content: String @unique
+  author: User! 
+  files: [File] @relation(link: INLINE)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
+type Expertise  {
+  id: ID! @id
+  title: String 
+  content: String
+  
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Research  {
+  id: ID! @id
+  title: String 
+  content: String 
+  files: [File] @relation(link: INLINE)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Social @embedded {
+  id: ID! @id
+  phone: Int 
+  line_id: String 
+  facebook: String 
+  etc: String
+}
+
+type Address @embedded {
+  id: ID! @id
+  addr: String
+  district: String
+  amphoe: String
+  province: String
+  zipcode: Int
+  social: Social
+}
+
+type File {
+  id: ID! @id
+  name: String
+  hash: String
+  size: String
+  owner: Post!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
+enum AccessRole @embedded {
+  ADMIN
+  STUDENT
+  PROFESSOR
+}
+
+enum Gender @embedded {
+  MALE
+  FEMALE
+}
+
+enum EducationStatus @embedded {
+  NULL
+  STUDYING
+  NOTSTUDYING
+  GRADUATE
+}
